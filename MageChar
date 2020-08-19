@@ -1,0 +1,274 @@
+package magechar;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class MageChar extends Panel implements KeyListener{
+    static int FIREx = 0;
+    static int FIREy = 0;
+    static int FBV = 0;
+    static int ShadowY = 310;
+    int Shadow = ShadowY + move2;
+    static int move2 = 0;
+    static int move = 0;
+    static int color = 0;
+    static int x = 0;
+    static int y = 0;
+    static int z = 0;
+    static String name = "";
+    static int ArmOutlineWidth = 26;
+    static int ArmOutlineHeight = 41;
+    static int ArmColorWidth = 20;
+    static int ArmColorHeight = 35;
+    static int StaffHandleOutlineX = 197;
+    static int StaffHandleOutlineY = 296;
+    static int StaffHandleColorX = 200;
+    static int StaffHandleColorY = 299;
+    static int StaffEndOutlineX = 302;
+    static int StaffEndOutlineY = 284;
+    static int StaffEndColorX = 305;
+    static int StaffEndColorY = 287;
+    static int OrbOutlineX = 309;
+    static int OrbOutlineY = 285;
+    static int OrbColorX = 312;
+    static int OrbColorY = 288;
+    
+    
+    public MageChar() {
+        this.setBackground(new Color(222, 100, 0));
+    }
+    
+    @Override
+    public void paint(Graphics D) {
+        
+    //Background
+        //Sky
+        D.setColor(new Color(130, 59, 0));
+            D.fillRect(0, 240, 1000, 80);
+        D.setColor(new Color(188, 70, 0));
+            D.fillRect(0, 160, 1000, 80);
+        D.setColor(new Color(222, 100, 0));
+            D.fillRect(0, 80, 1000, 80);
+        D.setColor(new Color(252, 130, 0));
+            D.fillRect(0, 0, 1000, 80);
+        //Ground
+        D.setColor(new Color(40, 40, 40));
+            D.fillRect(0, 300, 1000, 162);
+    // Mage
+        //Shadow
+        D.setColor(new Color(0, 0, 0, 70));
+            D.fillOval(160+move, Shadow+move2, 170, 40);
+        //Head Outline
+        D.setColor(Color.BLACK);
+            D.fillOval(197+move, 147+move2, 106, 106);
+        //Head Color
+        D.setColor(new Color(250, 187, 102));
+            D.fillOval(200+move, 150+move2, 100, 100);
+        //Eye Outline
+        D.setColor(Color.BLACK);
+            D.fillOval(267+move, 177+move2, 21, 46);
+        //Eye Color
+        D.setColor(new Color(100, 100, 100));
+            D.fillOval(270+move, 180+move2, 15, 40);
+        //Hat Shadow
+        D.setColor(new Color(0, 0, 0, 70));
+            D.fillRoundRect(200+move, 178+move2, 100, 30, 70, 70);
+        //Hat Outline
+        D.setColor(Color.BLACK);
+            D.fillOval(147+move, 137+move2, 216, 56);
+            D.fillRoundRect(187+move, 127+move2, 126, 46, 10, 10);
+            D.fillRoundRect(197+move, 107+move2, 106, 46, 30, 30);
+            D.fillRoundRect(202+move, 87+move2, 86, 66, 40, 40);
+            D.fillRoundRect(207+move, 77+move2, 66, 46, 30, 30);
+            D.fillRoundRect(212+move, 67+move2, 51, 61, 15, 15);
+            D.fillRoundRect(217+move, 57+move2, 36, 46, 25, 25);
+            D.fillArc(141+move, -23+move2, 125, 125, 290, 40);
+        //Hat Base Color
+        D.setColor(new Color(x, y, z));
+            D.fillOval(150+move, 140+move2, 210, 50);
+            D.fillRoundRect(190+move, 130+move2, 120, 40, 10, 10);
+            D.fillRoundRect(200+move, 110+move2, 100, 40, 30, 30);
+            D.fillRoundRect(205+move, 90+move2, 80, 60, 40, 40);
+            D.fillRoundRect(210+move, 80+move2, 60, 40, 30, 30);
+            D.fillRoundRect(215+move, 70+move2, 45, 55, 15, 15);
+            D.fillRoundRect(220+move, 60+move2, 30, 40, 25, 25);
+            D.fillArc(165+move, 2+move2, 90, 90, 290, 40);
+        //Hat Thing Outline
+        D.setColor(Color.BLACK);
+            D.fillArc(185+move, 115+move2, 130, 56, 180, 180);
+        //Hat Thing
+        D.setColor(new Color(25, 25, 25));
+            D.fillArc(188+move, 118+move2, 124, 50, 180, 180);
+            D.fillRoundRect(190+move, 130+move2, 120, 20, 10, 10);
+        //Hat Thing Overlay Outline
+        D.setColor(Color.BLACK);
+            D.fillArc(197+move, 112+move2, 106, 36, 180, 180);
+        //Hat Thing Overlay
+        D.setColor(new Color(x, y, z));
+            D.fillArc(200+move, 115+move2, 100, 30, 180, 180);
+        //Hat Thing Design Outline
+        D.setColor(new Color(10, 10, 10));
+            int[] i = {230+move, 270+move, 250+move};
+            int[] j = {171+move2, 171+move2, 140+move2};
+            D.fillPolygon(i, j, 3);
+        //Hat Thing Design Overlay
+        D.setColor(new Color(126, 0, 0));
+            int[] a = {235+move, 265+move, 250+move};
+            int[] b = {168+move2, 168+move2, 145+move2};
+            D.fillPolygon(a, b, 3);
+        //Robe Outline
+        D.setColor(Color.BLACK);
+            D.fillArc(197+move, 232+move2, 106, 190, 360, 180);
+            D.fillArc(197+move, 182+move2, 106, 92, 180, 180);
+            D.fillArc(198+move, 307+move2, 104, 36, 180, 180);
+        //Robe Color
+        D.setColor(new Color(x, y, z));
+            D.fillArc(200+move, 235+move2, 100, 180, 360, 180);
+            D.fillArc(200+move, 190+move2, 100, 80, 180, 180);
+            D.fillArc(201+move, 310+move2, 98, 30, 180, 180);
+        //Robe Thing Outline
+        D.setColor(Color.BLACK);
+            D.fillRoundRect(202+move, 247+move2, 96, 26, 10, 10);
+        //Robe Thing
+        D.setColor(new Color(25, 25, 25));
+            D.fillRoundRect(205+move, 250+move2, 90, 20, 10, 10);
+        //Staff Outline
+        D.setColor(Color.BLACK);
+            D.fillRoundRect(StaffHandleOutlineX+move, StaffHandleOutlineY+move2, 126, 11, 10, 10);
+            D.fillOval(StaffEndOutlineX+move, StaffEndOutlineY+move2, 36, 36);
+        //Staff Color
+        D.setColor(new Color(79, 40, 1));
+            D.fillRoundRect(StaffHandleColorX+move, StaffHandleColorY+move2, 120, 5, 10, 10);
+            D.fillOval(StaffEndColorX+move, StaffEndColorY+move2, 30, 30);
+        //Staff Orb Outline
+        D.setColor(Color.BLACK);
+            D.fillOval(OrbOutlineX+move, OrbOutlineY+move2, 31, 31);
+        //Staff Orb Color
+        D.setColor(new Color(126, 0, 0));
+            D.fillOval(OrbColorX+move, OrbColorY+move2, 25, 25);
+            //----------------------------------------------------------------------------------------------------
+        //Fireball!!
+            D.setColor(new Color(20, 20, 20, FBV));
+            D.fillOval(OrbColorX+FIREx, OrbColorY+move2, 25, 25);
+            //----------------------------------------------------------------------------------------------------
+        //Arm Outline
+        D.setColor(Color.BLACK);
+            D.fillOval(227+move, 261+move2, 36, 36);
+            D.fillRoundRect(232+move, 271+move2, ArmOutlineWidth, ArmOutlineHeight, 20, 20);
+        //Arm Color
+        D.setColor(new Color(250, 187, 102));
+            D.fillOval(230+move, 264+move2, 30, 30);
+            D.fillRoundRect(235+move, 274+move2, ArmColorWidth, ArmColorHeight, 20, 20);
+        //Name
+        D.setColor(Color.WHITE);
+            D.setFont(new Font("Century Gothic",Font.BOLD ,20));
+            D.drawString("Name: "+name, 160+move, 30+move2);
+            D.drawLine(150+move, 35+move2, 20, 10);
+    }
+
+    public static void main(String[] args) {
+        name = JOptionPane.showInputDialog("Your Mages Name");
+        color = Integer.parseInt(JOptionPane.showInputDialog("Your Mages Color: \n[1] Red-ish \n[2] Blue-ish \n[3] Black"));
+        MageChar panel = new MageChar();
+        JFrame frame = new JFrame();
+        frame.add(panel);
+        panel.addKeyListener(panel);
+        frame.setTitle("Pyromancer(Staff Hero)");
+        frame.setBackground(Color.BLACK);
+        frame.setSize(1000, 500);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        switch (color) {
+            case 1:
+                x = 138;
+                y = 0;
+                z = 0;
+                break;
+            case 2:
+                x = 14;
+                y = 11;
+                z = 69;
+                break;
+            case 3:
+                x = 10;
+                y = 10;
+                z = 10;
+                break;
+            default:
+                x = 200;
+                y = 200;
+                z = 200;
+                break;
+        }
+    }
+    
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode()== KeyEvent.VK_W && ArmOutlineWidth == 26){
+            ArmOutlineWidth = 41;
+            ArmOutlineHeight = 26;
+            ArmColorWidth = 35;
+            ArmColorHeight = 20;
+            StaffHandleOutlineX += 15;
+            StaffHandleOutlineY -= 15;
+            StaffHandleColorX += 15;
+            StaffHandleColorY -= 15;
+            StaffEndOutlineX += 15;
+            StaffEndOutlineY -= 15;
+            StaffEndColorX += 15;
+            StaffEndColorY -= 15;
+            OrbOutlineX += 15;
+            OrbOutlineY -= 15;
+            OrbColorX += 15;
+            OrbColorY -= 15;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_S && ArmOutlineWidth == 41){
+            ArmOutlineWidth = 26;
+            ArmOutlineHeight = 41;
+            ArmColorWidth = 20;
+            ArmColorHeight = 35;         
+            StaffHandleOutlineX -= 15;
+            StaffHandleOutlineY += 15;
+            StaffHandleColorX -= 15;
+            StaffHandleColorY += 15;
+            StaffEndOutlineX -= 15;
+            StaffEndOutlineY += 15;
+            StaffEndColorX -= 15;
+            StaffEndColorY += 15;
+            OrbOutlineX -= 15;
+            OrbOutlineY += 15;
+            OrbColorX -= 15;
+            OrbColorY += 15;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_UP){
+            move2 -= 10;
+        }    
+        if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            move2 += 10;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            move += 10;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            move -= 10;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_F){
+            
+
+        }
+        repaint();    
+    } 
+    
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+    
+    }
+
